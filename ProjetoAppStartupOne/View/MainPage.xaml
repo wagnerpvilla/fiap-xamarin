@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ProjetoAppStartupOne.ViewModel"
+             x:Class="ProjetoAppStartupOne.View.MainPage"
+             Title="Alunos">
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel></vm:MainPageViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView
+                    Margin="10"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    SelectionMode="Single"
+                    ItemsUpdatingScrollMode="KeepItemsInView"
+                    ItemsSource="{Binding Usuarios, Mode=TwoWay}"
+                    SelectedItem="{Binding UsuarioSelecionado}"
+                    SelectionChangedCommand="{Binding SelectionCommand}"
+                >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Nome}" FontSize="18" Padding="10"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

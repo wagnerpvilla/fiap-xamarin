@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:ProjetoAppStartupOne.ViewModel"
+             x:Class="ProjetoAppStartupOne.View.CreateAccountPage" 
+             Title="Nova Conta">
+    <ContentPage.BindingContext>
+        <vm:CadastrarViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="CADASTRAR CONTA" HorizontalOptions="Center" FontSize="Title" Margin="0,30,0,10"></Label>
+            <Entry x:Name="NomeEntry" Text="{Binding Nome}" Placeholder="Nome" Margin="10,10"></Entry>
+            <Entry x:Name="TelefoneEntry" Text="{Binding Telefone}" Placeholder="Telefone" Margin="10,10"></Entry>
+            <Entry x:Name="EmailEntry" Text="{Binding Email}" Placeholder="Email" Margin="10,10"></Entry>
+            <Entry x:Name="usuarioNomeEntry" Text="{Binding Usuario}" Placeholder="Usuário" Margin="10,10"></Entry>
+            <Entry x:Name="senhaEntry" Text="{Binding Senha}" Placeholder="Senha" Margin="10,10" IsPassword="True"></Entry>
+            <Label x:Name="mensagemCadastro" Text="{Binding CadastroMensagem, Mode=OneWay}" IsVisible="{Binding TurnCadastroMessage, Mode=OneWay}" Margin="10,0,0,0"></Label>            
+            <Button x:Name="cmdCadastrar" Text="CADASTRAR" TextColor="White" BackgroundColor="#009900" Margin="10,10,10,10" Command="{Binding cmdCadastrar}"></Button>                       
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

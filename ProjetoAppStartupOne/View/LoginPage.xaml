@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:ProjetoAppStartupOne.ViewModel"
+             x:Class="ProjetoAppStartupOne.View.LoginPage"
+             Title="Bem Vindo MVVM" Background="#F9F9F9">
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="LOGIN" HorizontalOptions="Center" FontSize="Title" Margin="0,30,0,10"></Label>
+            <Entry x:Name="usuarioNomeEntry" Text="{Binding Usuario}" Placeholder="Usuário" Margin="10,10"></Entry>
+            <Entry x:Name="senhaEntry" Text="{Binding Senha}" Placeholder="Senha" Margin="10,10" IsPassword="True"></Entry>
+            <Label x:Name="loginMensagemLabel" Text="{Binding LoginMessage, Mode=OneWay}" IsVisible="{Binding TurnLoginMessage, Mode=OneWay}" Margin="10,0,0,0"></Label>
+            <ImageButton HorizontalOptions="End" VerticalOptions="Center" HeightRequest="30" Margin="0,0,20,0" Command="{Binding cmdSetting}">
+                <ImageButton.Source>
+                    <OnPlatform x:TypeArguments="FileImageSource" iOS ="settingIcon.png" Android="settingIcon.png"></OnPlatform>
+                </ImageButton.Source>
+            </ImageButton>
+            <Button x:Name="cmdLogin" Text="LOGIN" TextColor="White" BackgroundColor="#009900" Margin="10,10,10,10" Command="{Binding cmdLogin}"></Button>
+            <Button x:Name="cmdCreateAccount" Text="NOVA CONTA" Margin="10,10,10,10" Command="{Binding cmdCreateAccount}"></Button>
+            <Label Text="Esqueci minha senha" TextColor="Blue" HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding cmdEsqueciMinhaSenha}"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
